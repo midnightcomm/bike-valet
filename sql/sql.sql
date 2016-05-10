@@ -1,0 +1,1 @@
+create view if not exists initial_view as select person.name, person.email, checkin.id, checkin.zipcode, checkin.miles, status.status_name, person.secret, checkin.time from checkin join person ON checkin.person_id = person.person_id JOIN status on checkin.status_id = status.status_id WHERE status.status_name = "Initial Entry"

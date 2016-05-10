@@ -21,8 +21,7 @@ sub view_initial_checkin_admin() {
 
 
   # http://www.perl.com/pub/1999/10/DBI.html
-  my $sth = $dbh->prepare('SELECT * FROM checkin')
-#  my $sth = $dbh->prepare('select person.*, checkin.id from checkin join person ON checkin.person_id = person.person_id')
+  my $sth = $dbh->prepare('SELECT * FROM initial_view')
                 or die "Couldn't prepare statement: " . $dbh->errstr;
   $sth->execute()
 	or die "Couldn't execute statement: " . $sth->errstr; # Run Query
@@ -30,8 +29,13 @@ sub view_initial_checkin_admin() {
       # Load data into HTML template from Database
       while (my @data = $sth->fetchrow_array()) {
 	my %params_hash;
-$params_hash{'ZIP'} = $data[2];
-	$params_hash{'CHECKIN_ID'} = $data[1];
+	$params_hash{'NAME'}       = $data[0];
+	$params_hash{'EMAIL'}      = $data[1];
+	$params_hash{'CHECKIN_ID'} = $data[2];
+	$params_hash{'ZIP'}        = $data[3];
+	$params_hash{'MILES'}      = $data[4];
+#	$params_hash{'STATUS'}     = $data[5];
+	$params_hash{'SECRET'}     = $data[6];
 	push(@bike_table, \%params_hash);
       }
 

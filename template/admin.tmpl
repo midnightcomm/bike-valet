@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head><title>Valet Parking Control Page</title>
+<head>
+<style>
+tr:nth-child(even) {background-color: #f2f2f2}
+tr:nth-child(odd) {background-color: #ffffff}
+#messages{ background-color: #ffdddd}
+</style>
+<title>Valet Parking Control Page</title>
 <body>
   <TMPL_IF NAME="SHOW_MSG">
+  <div id="messages">
     <TMPL_LOOP NAME=MSG>
       <TMPL_VAR NAME=MSG_BODY><br />
     </TMPL_LOOP>
+  </div>
   </TMPL_IF>
 
 <table>
+  <tr><th>Name</th><th>email</th><th>Zip</th><th>Miles</th><th>SECRET</th></tr>
   <TMPL_LOOP NAME=BIKE_TABLE>
-  <tr><td>
-    <TMPL_VAR NAME=ZIP>
-  </td><td>
-    <TMPL_VAR NAME=CHECKIN_ID>
-  </td>
+  <tr>
+  <td><TMPL_VAR NAME=NAME></td>
+  <td><TMPL_VAR NAME=EMAIL></td>
+  <td><TMPL_VAR NAME=ZIP></td>
+  <td><TMPL_VAR NAME=MILES></td>
+<!--  <td><TMPL_VAR NAME=STATUS></td>-->
+  <td><TMPL_VAR NAME=SECRET></td>
+<!-- <TMPL_VAR NAME=CHECKIN_ID> -->
 </tr>
   </TMPL_LOOP>
 

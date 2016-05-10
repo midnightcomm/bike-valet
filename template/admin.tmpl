@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Valet Parking Control Page</title>
+<body>
+  <TMPL_IF NAME="SHOW_MSG">
+    <TMPL_LOOP NAME=MSG>
+      <TMPL_VAR NAME=MSG_BODY><br />
+    </TMPL_LOOP>
+  </TMPL_IF>
+
+<table>
+  <TMPL_LOOP NAME=BIKE_TABLE>
+  <tr><td>
+    <TMPL_VAR NAME=ZIP>
+  </td><td>
+    <TMPL_VAR NAME=CHECKIN_ID>
+  </td>
+</tr>
+  </TMPL_LOOP>
+
+</table>
+</body>
+</html>
+
